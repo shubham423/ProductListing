@@ -54,8 +54,6 @@ dependencies {
     //Koin for DI
     implementation "io.insert-koin:koin-android:3.4.2"
 
-    // Koin Android ViewModel features
-    implementation 'io.insert-koin:koin-androidx-viewmodel:3.4.2'
 
     //Okhttp for logging responses
     implementation "com.squareup.okhttp3:okhttp:4.9.3"
