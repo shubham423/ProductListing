@@ -21,6 +21,7 @@ class ProductListingFragment : Fragment() {
     private lateinit var binding: FragmentProductListingBinding
     private lateinit var adapter: ProductsListAdapter
     private val viewModel:ProductListViewModel by viewModel()
+    private var productsList:ArrayList<Product> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +43,7 @@ class ProductListingFragment : Fragment() {
         binding.searchView.clearFocus()
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                adapter.filter.filter(query)
+              filter(query)
                 return false
             }
 
@@ -61,6 +62,7 @@ class ProductListingFragment : Fragment() {
                         binding.progressBar.gone()
                         it.data?.let {
                                 products -> adapter.addData(products)
+                            productsList.addAll(products)
                         }
                         binding.rvProducts.adapter=adapter
                     }
@@ -78,6 +80,30 @@ class ProductListingFragment : Fragment() {
                     }
                 }
             }
+        }
+    }
+
+    private fun filter(text: String) {
+        // creating a new array list to filter our data.
+        val filteredList: ArrayList<Product> = ArrayList()
+
+        // running a for loop to compare elements.
+        for (item in productsList) {
+            // checking if the entered string matched with any item of our recycler view.
+            if (item.productName?.toLowerCase()?.contains(text.toLowerCase()) == true) {
+                // if the item is matched we are
+                // adding it to our filtered list.
+                filteredList.add(item)
+            }
+        }
+        if (filteredList.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            Toast.makeText(requireContext(), "No Data Found..", Toast.LENGTH_SHORT).show()
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            adapter.addData(filteredList)
         }
     }
 

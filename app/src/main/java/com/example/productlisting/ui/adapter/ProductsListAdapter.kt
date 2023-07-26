@@ -11,7 +11,7 @@ import com.example.productlisting.databinding.ItemProductBinding
 
 
 class ProductsListAdapter(
-) : RecyclerView.Adapter<ProductsListAdapter.DataViewHolder>(), Filterable{
+) : RecyclerView.Adapter<ProductsListAdapter.DataViewHolder>(){
 
     private var products:ArrayList<Product> = arrayListOf()
     private var filteredProductList:ArrayList<Product> = arrayListOf()
@@ -46,34 +46,34 @@ class ProductsListAdapter(
         notifyDataSetChanged()
     }
 
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charString = constraint?.toString() ?: ""
-                filteredProductList = if (charString.isEmpty()) products else {
-                    val filteredList = ArrayList<Product>()
-                    products
-                        .filter {
-                            (it.productName?.contains(constraint!!) == true) ||
-                                    (constraint?.let { it1 -> it.productType?.contains(it1) } == true)
-
-                        }
-                        .forEach { filteredList.add(it) }
-                    filteredList
-
-                }
-                return FilterResults().apply { values = filteredProductList }
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-
-                filteredProductList = if (results?.values == null)
-                    arrayListOf()
-                else
-                    results.values as ArrayList<Product>
-                notifyDataSetChanged()
-            }
-        }
-    }
+//    override fun getFilter(): Filter {
+//        return object : Filter() {
+//            override fun performFiltering(constraint: CharSequence?): FilterResults {
+//                val charString = constraint?.toString() ?: ""
+//                filteredProductList = if (charString.isEmpty()) products else {
+//                    val filteredList = ArrayList<Product>()
+//                    products
+//                        .filter {
+//                            (it.productName?.contains(constraint!!) == true) ||
+//                                    (constraint?.let { it1 -> it.productType?.contains(it1) } == true)
+//
+//                        }
+//                        .forEach { filteredList.add(it) }
+//                    filteredList
+//
+//                }
+//                return FilterResults().apply { values = filteredProductList }
+//            }
+//
+//            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+//
+//                filteredProductList = if (results?.values == null)
+//                    arrayListOf()
+//                else
+//                    results.values as ArrayList<Product>
+//                notifyDataSetChanged()
+//            }
+//        }
+//    }
 
 }
