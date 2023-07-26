@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.productlisting.R
 import com.example.productlisting.data.model.Product
 import com.example.productlisting.databinding.FragmentProductListingBinding
 import com.example.productlisting.ui.adapter.ProductsListAdapter
@@ -37,6 +39,13 @@ class ProductListingFragment : Fragment() {
         viewModel.getProducts()
         initObservers()
         initSearchView()
+        initClickListeners()
+    }
+
+    private fun initClickListeners() {
+        binding.addProductFab.setOnClickListener {
+            findNavController()?.navigate(R.id.action_productListingFragment_to_addProductFragment)
+        }
     }
 
     private fun initSearchView() {

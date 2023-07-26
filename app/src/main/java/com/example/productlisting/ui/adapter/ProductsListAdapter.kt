@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.productlisting.data.model.Product
 import com.example.productlisting.databinding.ItemProductBinding
+import com.example.productlisting.utils.roundUpToTwoDecimalPlaces
 
 
 class ProductsListAdapter(
@@ -21,8 +22,8 @@ class ProductsListAdapter(
                 ivProduct.load(if (product.image?.isNotEmpty() == true) product.image else "https://lukaszmazurkiewicz.com/wp-content/uploads/2019/08/perfume-bottle-calvin-klein-product-photography.jpg")
                 tvProductName.text = product.productName
                 tvProductType.text = product.productType
-                tvPriceValue.text = product.price.toString()
-                tvTaxValue.text = product.tax.toString()
+                tvPriceValue.text = "₹${(product.price ?: 0.0).roundUpToTwoDecimalPlaces()}"
+                tvTaxValue.text = "Tax: ₹${(product.tax ?: 0.0).roundUpToTwoDecimalPlaces()}"
             }
         }
     }
