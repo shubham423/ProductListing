@@ -1,4 +1,4 @@
-package com.example.productlisting.viewmodels
+package com.example.productlisting.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,10 +16,7 @@ class ProductListViewModel(private val repository: ProductsRepository) : ViewMod
     private val _productFlow = MutableStateFlow<Resource<List<Product>>?>(null)
     val productFlow: StateFlow<Resource<List<Product>>?> = _productFlow
 
-    init {
-        getProduct()
-    }
-    fun getProduct() {
+    fun getProducts() {
         viewModelScope.launch {
             _productFlow.emit(Resource.loading(null))
             repository.getProductsList().let {

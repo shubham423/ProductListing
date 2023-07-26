@@ -1,7 +1,7 @@
 package com.example.productlisting.di
 
 
-import com.example.productlisting.viewmodels.ProductListViewModel
+import com.example.productlisting.ui.viewmodels.ProductListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

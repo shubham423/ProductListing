@@ -11,9 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val appModule = module {
     single { provideOkHttpClient() }
-    single { provideRetrofit(get(), Constants.BASE_URL) }
+    single { provideRetrofit(get()) }
     single { provideApiService(get()) }
-
 }
 
 private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
@@ -28,11 +27,10 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
 
 private fun provideRetrofit(
     okHttpClient: OkHttpClient,
-    BASE_URL: String
 ): Retrofit =
     Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(BASE_URL)
+        .baseUrl(Constants.BASE_URL)
         .client(okHttpClient)
         .build()
 
