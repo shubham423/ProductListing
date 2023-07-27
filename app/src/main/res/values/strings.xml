@@ -4,4 +4,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_products">Products</string>
     <string name="text_add_product">Add Product</string>
+    <string name="product_type">Product Type</string>
+    <string name="product_name">Product name</string>
+    <string name="selling_price">Selling Price</string>
+    <string name="tax_rate">Tax Rate</string>
+    <string name="select_image">Select Image</string>
+    <string name="submit">Submit</string>
+    <string name="no_image_was_chosen">No image was chosen</string>
+    <string name="product_added_succesfully">Product added succesfully</string>
+    <string name="some_thing_went_wrong">Some thing went wrong %1$s</string>
+    <string name="please_fill_product_type">please fill product type</string>
+    <string name="please_fill_product_name">please fill product name</string>
+    <string name="please_fill_selling_price">please fill selling price</string>
+    <string name="please_fill_tax_rate">please fill tax rate</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.productlisting.ui
+package com.example.productlisting.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -44,7 +44,7 @@ class ProductListingFragment : Fragment() {
 
     private fun initClickListeners() {
         binding.addProductFab.setOnClickListener {
-            findNavController()?.navigate(R.id.action_productListingFragment_to_addProductFragment)
+            findNavController().navigate(R.id.action_productListingFragment_to_addProductFragment)
         }
     }
 
